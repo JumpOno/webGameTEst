@@ -9,7 +9,6 @@ pygame.init()
 screen = pygame.display.set_mode((SCR_W, SCR_H))
 clock = pygame.time.Clock()
 
-
 # 画面状態ID
 ST_TITLE = 0
 ST_MAIN_GAME = 1
@@ -17,6 +16,8 @@ ST_RESULT = 2
 
 
 # ********************************************
+
+
 class Card:
     def __init__(self, x, y, width, height, color, image_path, card_word):
         """
@@ -93,8 +94,10 @@ class Bord:
         self.rect = None
         self.blank = []
         # 6つの枠位置を作成（X座標とY座標）
-        for W in range(6):
-            self.blank.append((W * (100 + 20) + 20, 80, W))  # 横座標、縦座標、枠のID（順番を記録するため）
+        for W in range(5):
+            self.blank.append((W * (100 + 50) + 50, 80, W))  # 横座標、縦座標、枠のID（順番を記録するため）
+        for W in range(5):
+            self.blank.append((W * (100 + 50) + 50, 200, W + 5))  # 横座標、縦座標、枠のID（順番を記録するため）
 
     def draw(self, screen):
         """
@@ -102,7 +105,7 @@ class Bord:
         """
         for target in self.blank:
             self.rect = pygame.Rect(target[0] - 1, target[1] - 1, 101, 101)
-            pygame.draw.rect(screen, (0, 0, 0), self.rect, 3)
+            pygame.draw.rect(screen, (0, 0, 0), self.rect, 5)
 
 
 class state:
@@ -126,11 +129,16 @@ class title(state):
     """
     タイトル画面の状態を管理
     """
+    text_surface = None
 
     def __init__(self, font):
         super().__init__(font)
-        self.text_surface = font.render("title", True, (0, 0, 255))
+        self.text_surface = self.font.render("title", True, (255, 255, 255))
         self.name = "title"
+        self.image = pygame.image.load("resource/cake7.jpg")
+        self.image = pygame.transform.scale(self.image, (800, 600))
+        # img_char = pygame.image.load("resource/cake7.jpg")
+        self.rect = (0, 0, 0, 0)
 
     def handle_event(self, event):
         """
@@ -138,11 +146,14 @@ class title(state):
         """
         if event.type == pygame.MOUSEBUTTONDOWN:
             return ST_MAIN_GAME
+        else:
+            return ST_TITLE
 
     def draw(self, screen):
         """
         タイトル画面を描画
         """
+        screen.blit(self.image, self.rect)
         screen.blit(self.text_surface, (10, 10))
 
 
@@ -157,12 +168,21 @@ class mainGame(state):
         self.display_words = None
         self.text_surface = font.render("mainGame", True, (0, 0, 255))
         self.name = "mainGame"
+        self.image = pygame.image.load("resource/cake7.jpg")
 
         # ゲームで使用するカードを作成
         self.cards = [
-            Card(100, 400, 100, 100, (0, 0, 0), "resource/forest.png", "りんご"),
-            Card(200, 400, 100, 100, (0, 0, 0), "resource/meadow.png", "ごりら"),
-            Card(300, 400, 100, 100, (0, 0, 0), "resource/tatemono.jpg", "らっぱ"),
+            Card(100, 400, 100, 100, (0, 0, 0), "resource/cake7.jpg", "けーき"),
+            Card(200, 400, 100, 100, (0, 0, 0), "resource/fox7.jpg", "きつね"),
+            Card(300, 400, 100, 100, (0, 0, 0), "resource/cat7.jpg", "ねこ"),
+            Card(400, 400, 100, 100, (0, 0, 0), "resource/compass7.jpg", "こんぱす"),
+            Card(500, 400, 100, 100, (0, 0, 0), "resource/watermelon7.jpg", "すいか"),
+            Card(100, 500, 100, 100, (0, 0, 0), "resource/card7.jpg", "かーど"),
+            Card(200, 500, 100, 100, (0, 0, 0), "resource/doughnut7.jpg", "どーなつ"),
+            Card(300, 500, 100, 100, (0, 0, 0), "resource/fishing7.jpg", "つり"),
+            Card(400, 500, 100, 100, (0, 0, 0), "resource/apple7.jpg", "りんご"),
+            Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら"),
+
         ]
 
         # 画像設置位置の枠
@@ -231,6 +251,7 @@ class mainGame(state):
         """
         screen.blit(self.text_surface, (10, 10))
         self.bord.draw(screen)
+        # screen.blit(self.image, self.rect)
         # カードを描画
         for card in self.cards:
             card.draw(screen)
@@ -252,7 +273,6 @@ class mainGame(state):
             word_surface = self.font.render("並べ終えたら右下の黄色の四角をクリックしてください。", True, (255, 0, 0))
 
         screen.blit(word_surface, (10, 40))
-
 
 async def main():
     """
