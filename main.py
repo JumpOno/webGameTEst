@@ -155,6 +155,7 @@ class title(state):
                 CurrentMode = NORMAL_MODE
             else:
                 CurrentMode = HARD_MODE
+            print(CurrentMode)
             return ST_MAIN_GAME        
         else:
             return ST_TITLE
