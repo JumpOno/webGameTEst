@@ -97,13 +97,13 @@ class Bord:
         画像設置位置の座標を設定する
         """
         self.rect = None
-        self.NBlank = []
+        self.blank = []
         self.Hblank = []
         # 枠位置を作成（X座標とY座標,ノーマル）
         for W in range(5):
-            self.NBlank.append((W * (100 + 50) + 50, 80, W))  # 横座標、縦座標、枠のID（順番を記録するため）
+            self.blank.append((W * (100 + 50) + 50, 80, W))  # 横座標、縦座標、枠のID（順番を記録するため）
         for W in range(5):
-            self.NBlank.append((W * (100 + 50) + 50, 200, W + 5))  # 横座標、縦座標、枠のID（順番を記録するため）
+            self.blank.append((W * (100 + 50) + 50, 200, W + 5))  # 横座標、縦座標、枠のID（順番を記録するため）
 
         # 6つの枠位置を作成（X座標とY座標,ハード）
         #for W in range(3):
@@ -116,7 +116,7 @@ class Bord:
         画像設置位置の枠線を描画する
         """
         #if CurrentMode == NORMAL_MODE:
-        for target in self.NBlank:
+        for target in self.blank:
             self.rect = pygame.Rect(target[0] - 1, target[1] - 1, 101, 101)
             pygame.draw.rect(screen, (0, 0, 0), self.rect, 5)
         #else:
@@ -194,7 +194,7 @@ class mainGame(state):
         self.image = pygame.image.load("resource/cake7.jpg")
 
         # ゲームで使用するカードを作成
-        self.cards = [[
+        self.cards = [
             Card(100, 400, 100, 100, (0, 0, 0), "resource/cake7.jpg", "けーき"),
             Card(200, 400, 100, 100, (0, 0, 0), "resource/fox7.jpg", "きつね"),
             Card(300, 400, 100, 100, (0, 0, 0), "resource/cat7.jpg", "ねこ"),
@@ -205,9 +205,7 @@ class mainGame(state):
             Card(300, 500, 100, 100, (0, 0, 0), "resource/fishing7.jpg", "つり"),
             Card(400, 500, 100, 100, (0, 0, 0), "resource/apple7.jpg", "りんご"),
             Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら")
-        ],
-        ["dmy"]
-                     ]
+        ]
 
         # 画像設置位置の枠
         self.bord = Bord()
@@ -232,7 +230,7 @@ class mainGame(state):
         """
         ゲーム内でのイベント処理
         """
-        for card in self.cards[0]:
+        for card in self.cards:
             self.temp = card.handle_event(event, self.bord.blank)
             if not self.temp == -2:
                 print(self.temp)
@@ -277,7 +275,7 @@ class mainGame(state):
         self.bord.draw(screen)
         # screen.blit(self.image, self.rect)
         # カードを描画
-        for card in self.cards[0]:
+        for card in self.cards:
             card.draw(screen)
 
         pygame.draw.rect(screen, (255, 255, 0), self.button_rect)
