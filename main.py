@@ -204,10 +204,10 @@ class mainGame(state):
             Card(200, 500, 100, 100, (0, 0, 0), "resource/doughnut7.jpg", "どーなつ"),
             Card(300, 500, 100, 100, (0, 0, 0), "resource/fishing7.jpg", "つり"),
             Card(400, 500, 100, 100, (0, 0, 0), "resource/apple7.jpg", "りんご"),
-            Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら"),
+            Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら")
         ],
-        [
-        ]]
+        ["dmy"]
+                     ]
 
         # 画像設置位置の枠
         self.bord = Bord()
@@ -232,7 +232,7 @@ class mainGame(state):
         """
         ゲーム内でのイベント処理
         """
-        for card in self.cards[CurrentMode]:
+        for card in self.cards[0]:
             self.temp = card.handle_event(event, self.bord.blank)
             if not self.temp == -2:
                 print(self.temp)
@@ -277,7 +277,7 @@ class mainGame(state):
         self.bord.draw(screen)
         # screen.blit(self.image, self.rect)
         # カードを描画
-        for card in self.cards[CurrentMode]:
+        for card in self.cards[0]:
             card.draw(screen)
 
         pygame.draw.rect(screen, (255, 255, 0), self.button_rect)
