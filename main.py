@@ -279,7 +279,7 @@ async def main():
     ゲームのメインループ
     """
     going = True
-    font = pygame.font.Font("ipaexg.ttf", 30)
+    font = pygame.font.Font("ipaexg.ttf", 19)
     screen.fill((220, 220, 220))
 
     # ゲーム状態を管理するオブジェクト
