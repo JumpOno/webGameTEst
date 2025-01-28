@@ -9,6 +9,11 @@ pygame.init()
 screen = pygame.display.set_mode((SCR_W, SCR_H))
 clock = pygame.time.Clock()
 
+# モード選択
+NORMAL_MODE = 0
+HARD_MODE = 1
+CurrentMode = NORMAL_MODE
+
 # 画面状態ID
 ST_TITLE = 0
 ST_MAIN_GAME = 1
@@ -145,7 +150,12 @@ class title(state):
         マウスクリックでメインゲームに遷移
         """
         if event.type == pygame.MOUSEBUTTONDOWN:
-            return ST_MAIN_GAME
+            x, y = event.pos
+            if x < SCR_W/2:
+                CurrentMode = NORMAL_MODE
+            else:
+                CurrentMode = HARD_MODE
+            return ST_MAIN_GAME        
         else:
             return ST_TITLE
 
@@ -284,8 +294,8 @@ async def main():
 
     # ゲーム状態を管理するオブジェクト
     states = [title(font), mainGame(font)]
-    # currentState = ST_TITLE
-    currentState = ST_MAIN_GAME
+    currentState = ST_TITLE
+    #currentState = ST_MAIN_GAME
 
     # ゲームのメインループ
     while going:
