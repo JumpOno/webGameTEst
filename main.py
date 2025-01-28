@@ -162,12 +162,12 @@ class title(state):
         マウスクリックでメインゲームに遷移
         """
         if event.type == pygame.MOUSEBUTTONDOWN:
-            x, y = event.pos
-            if x < SCR_W/2:
-                CurrentMode = NORMAL_MODE
-            else:
-                CurrentMode = HARD_MODE
-            print(CurrentMode)
+            #x, y = event.pos
+            #if x < SCR_W/2:
+            #    CurrentMode = NORMAL_MODE
+            #else:
+            #    CurrentMode = HARD_MODE
+            #print(CurrentMode)
             return ST_MAIN_GAME        
         else:
             return ST_TITLE
@@ -306,8 +306,8 @@ async def main():
 
     # ゲーム状態を管理するオブジェクト
     states = [title(font), mainGame(font)]
-    currentState = ST_TITLE
-    #currentState = ST_MAIN_GAME
+    #currentState = ST_TITLE
+    currentState = ST_MAIN_GAME
 
     # ゲームのメインループ
     while going:
