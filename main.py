@@ -205,20 +205,18 @@ class mainGame(state):
             Card(300, 500, 100, 100, (0, 0, 0), "resource/fishing7.jpg", "つり"),
             Card(400, 500, 100, 100, (0, 0, 0), "resource/apple7.jpg", "りんご"),
             Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら"),
-
         ],
         [
-            Card(100, 400, 100, 100, (0, 0, 0), "resource/usagi.jpg", "うさぎ"),
-            Card(200, 400, 100, 100, (0, 0, 0), "resource/samurai.jpg", "サムライ"),
-            Card(300, 400, 100, 100, (0, 0, 0), "resource/zaru.jpg", "ざる"),
-            Card(400, 400, 100, 100, (0, 0, 0), "resource/rureto.jpg", "るーれっと"),
-            Card(500, 400, 100, 100, (0, 0, 0), "resource/gyoza.jpg", "ぎょうざ"),
-            Card(100, 500, 100, 100, (0, 0, 0), "resource/tora.jpg", "とら"),
-            Card(200, 500, 100, 100, (0, 0, 0), "resource/kumi.jpg", "くみたいそう"),
-            Card(300, 500, 100, 100, (0, 0, 0), "resource/taihu.jpg", "たいふう"),
-            Card(400, 500, 100, 100, (0, 0, 0), "resource/tonkatsu.jpg", "とんかつ"),
-            Card(500, 500, 100, 100, (0, 0, 0), "resource/ryori.jpg", "りょうり"),
-
+            Card(100, 400, 100, 100, (0, 0, 0), "resource/cake7.jpg", "けーき"),
+            Card(200, 400, 100, 100, (0, 0, 0), "resource/fox7.jpg", "きつね"),
+            Card(300, 400, 100, 100, (0, 0, 0), "resource/cat7.jpg", "ねこ"),
+            Card(400, 400, 100, 100, (0, 0, 0), "resource/compass7.jpg", "こんぱす"),
+            Card(500, 400, 100, 100, (0, 0, 0), "resource/watermelon7.jpg", "すいか"),
+            Card(100, 500, 100, 100, (0, 0, 0), "resource/card7.jpg", "かーど"),
+            Card(200, 500, 100, 100, (0, 0, 0), "resource/doughnut7.jpg", "どーなつ"),
+            Card(300, 500, 100, 100, (0, 0, 0), "resource/fishing7.jpg", "つり"),
+            Card(400, 500, 100, 100, (0, 0, 0), "resource/apple7.jpg", "りんご"),
+            Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら"),
         ]]
 
         # 画像設置位置の枠
