@@ -106,23 +106,23 @@ class Bord:
             self.NBlank.append((W * (100 + 50) + 50, 200, W + 5))  # 横座標、縦座標、枠のID（順番を記録するため）
 
         # 6つの枠位置を作成（X座標とY座標,ハード）
-        for W in range(3):
-            self.Hblank.append((W * (100 + 50) + 50, 80, W))  # 横座標、縦座標、枠のID（順番を記録するため）
-        for W in range(3):
-            self.Hblank.append((W * (100 + 50) + 50, 200, W + 3))  # 横座標、縦座標、枠のID（順番を記録するため）    
+        #for W in range(3):
+        #    self.Hblank.append((W * (100 + 50) + 50, 80, W))  # 横座標、縦座標、枠のID（順番を記録するため）
+        #for W in range(3):
+        #    self.Hblank.append((W * (100 + 50) + 50, 200, W + 3))  # 横座標、縦座標、枠のID（順番を記録するため）    
     
     def draw(self, screen):
         """
         画像設置位置の枠線を描画する
         """
-        if CurrentMode == NORMAL_MODE:
-            for target in self.NBlank:
-                self.rect = pygame.Rect(target[0] - 1, target[1] - 1, 101, 101)
-                pygame.draw.rect(screen, (0, 0, 0), self.rect, 5)
-        else:
-            for target in self.HBlank:
-                self.rect = pygame.Rect(target[0] - 1, target[1] - 1, 101, 101)
-                pygame.draw.rect(screen, (0, 0, 0), self.rect, 5)
+        #if CurrentMode == NORMAL_MODE:
+        for target in self.NBlank:
+            self.rect = pygame.Rect(target[0] - 1, target[1] - 1, 101, 101)
+            pygame.draw.rect(screen, (0, 0, 0), self.rect, 5)
+        #else:
+        #    for target in self.HBlank:
+        #        self.rect = pygame.Rect(target[0] - 1, target[1] - 1, 101, 101)
+        #        pygame.draw.rect(screen, (0, 0, 0), self.rect, 5)
             
 
 
@@ -207,16 +207,6 @@ class mainGame(state):
             Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら"),
         ],
         [
-            Card(100, 400, 100, 100, (0, 0, 0), "resource/cake7.jpg", "けーき"),
-            Card(200, 400, 100, 100, (0, 0, 0), "resource/fox7.jpg", "きつね"),
-            Card(300, 400, 100, 100, (0, 0, 0), "resource/cat7.jpg", "ねこ"),
-            Card(400, 400, 100, 100, (0, 0, 0), "resource/compass7.jpg", "こんぱす"),
-            Card(500, 400, 100, 100, (0, 0, 0), "resource/watermelon7.jpg", "すいか"),
-            Card(100, 500, 100, 100, (0, 0, 0), "resource/card7.jpg", "かーど"),
-            Card(200, 500, 100, 100, (0, 0, 0), "resource/doughnut7.jpg", "どーなつ"),
-            Card(300, 500, 100, 100, (0, 0, 0), "resource/fishing7.jpg", "つり"),
-            Card(400, 500, 100, 100, (0, 0, 0), "resource/apple7.jpg", "りんご"),
-            Card(500, 500, 100, 100, (0, 0, 0), "resource/gorilla7.jpg", "ごりら"),
         ]]
 
         # 画像設置位置の枠
